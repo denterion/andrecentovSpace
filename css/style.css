@@ -1,3 +1,32 @@
+html {
+  scroll-behavior: smooth;
+}
+
+/* SCROLLBAR (Chrome / Edge) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #08140f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    #1e5c47,
+    #2bb3a3
+  );
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #35d6c2;
+}
+
+
+
+
 * {
   margin: 0;
   padding: 0;
@@ -246,7 +275,23 @@ h2 {
   justify-content: space-between;
   align-items: center;
   gap: 40px;
+
+  padding: 40px;
+  border-radius: 16px;
+  border: 1px solid rgba(43,179,163,0.25);
+
+  box-shadow: 0 0 25px rgba(0,0,0,0.4);
 }
+
+.project-inner:hover {
+  box-shadow:
+    0 0 30px rgba(43,179,163,0.25),
+    0 0 60px rgba(0,0,0,0.5);
+
+  transform: scale(1.01);
+  transition: 0.3s;
+}
+
 
 .project-text h2 {
   font-size: 34px;
@@ -278,14 +323,24 @@ h2 {
 
 
 .glyph-big {
-  width: 320px;
+   width: 320px;
   margin-bottom: 24px;
   display: block;
   opacity: 0.95;
+  transition: 0.3s;
+}
 
+.glyph-big:hover {
+  animation: glyphPulse 1.6s infinite ease-in-out;
   filter:
-    drop-shadow(0 0 10px rgba(200,170,90,0.35))
-    drop-shadow(0 0 20px rgba(200,170,90,0.15));
+    drop-shadow(0 0 14px rgba(255,210,120,0.6))
+    drop-shadow(0 0 28px rgba(255,210,120,0.35));
+}
+
+@keyframes glyphPulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.12); }
+  100% { transform: scale(1); }
 }
 
 
@@ -328,7 +383,6 @@ h2 {
 
 .project-block {
   height: 100vh;
-  background: #0f2a1d;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -369,6 +423,18 @@ h2 {
   right: 8%;
 }
 
+.project-block:nth-child(odd) {
+  background: #0f2a1d;
+}
+
+.project-block:nth-child(even) {
+  background: #0b1f16;
+}
+
+.project-block:nth-child(even) .project-inner {
+  border: 1px solid rgba(60,200,170,0.2);
+}
+
 @keyframes lanternPulse {
   0%   { opacity: 0.7; transform: scale(1); }
   50%  { opacity: 1;   transform: scale(1.08); }
@@ -397,4 +463,130 @@ h2 {
   0%   { opacity: 0.7; transform: scaleX(1); }
   50%  { opacity: 1;   transform: scaleX(1.15); }
   100% { opacity: 0.7; transform: scaleX(1); }
+}
+
+.github-icon {
+  width: 48px;
+  opacity: 0.85;
+  transition: 0.3s;
+  filter: drop-shadow(0 0 6px rgba(0,0,0,0.4));
+}
+
+.github-icon:hover {
+  opacity: 1;
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 10px rgba(43,179,163,0.6));
+}
+
+.project-link {
+  background: none;
+  border: none;
+}
+
+.project-link a {
+  background: none;
+  border: none;
+}
+
+.github-icon {
+  width: 90px;
+  opacity: 0.9;
+  transition: 0.3s;
+
+  filter:
+    drop-shadow(0 0 8px rgba(0,0,0,0.5))
+    drop-shadow(0 0 14px rgba(43,179,163,0.35));
+}
+
+.github-icon:hover {
+  opacity: 1;
+  transform: scale(1.2);
+
+  filter:
+    drop-shadow(0 0 12px rgba(43,179,163,0.7))
+    drop-shadow(0 0 22px rgba(43,179,163,0.45));
+}
+
+.temple-wrapper {
+  position: relative;
+  display: inline-block;
+  transition: 0.4s;
+}
+
+.temple-wrapper:hover {
+  transform: translateY(-12px);
+}
+
+.leaves {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  pointer-events: none;
+}
+
+.leaves span {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #2bb36b;
+  border-radius: 50% 0 50% 0;
+  opacity: 0;
+}
+.temple-wrapper:hover .leaves span {
+  animation: leafFall 2.5s linear forwards;
+}
+
+.leaves span:nth-child(1) { left: -40px; animation-delay: 0s; }
+.leaves span:nth-child(2) { left: 0px;  animation-delay: 0.2s; }
+.leaves span:nth-child(3) { left: 40px; animation-delay: 0.4s; }
+
+@keyframes leafFall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(120px) rotate(260deg);
+    opacity: 0;
+  }
+}
+
+.monkey-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+  justify-items: center;
+  margin: 40px 0;
+}
+
+.monkey-holder {
+  position: relative;
+  width: 260px;
+  transition: 0.3s;
+}
+
+.monkey-holder:hover {
+  transform: translateY(-12px);
+}
+
+.monkey-bg {
+  width: 100%;
+  filter: drop-shadow(0 0 25px rgba(0,0,0,0.7));
+}
+
+/* ЛОГО В ЦЕНТРЕ */
+.company-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  width: 70px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.company-logo:hover {
+  transform: translate(-50%, -40%) scale(1.15);
+  filter: drop-shadow(0 0 12px rgba(255,215,120,0.7));
 }
