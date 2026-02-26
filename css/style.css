@@ -141,54 +141,72 @@ h2 {
 }
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(2, 180px);
-  gap: 20px;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 40px;                 /* ← НОРМАЛЬНОЕ расстояние */
   justify-content: center;
-  margin-bottom: 30px;
+  justify-items: center;
+  margin: 40px auto 30px;
+  max-width: 520px;          /* чтобы не растягивалось */
 }
 
+/* карточка */
 .contact-card {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  padding: 28px;
+
+  background: rgba(12, 40, 28, 0.75);
+  border: 1px solid rgba(43, 179, 163, 0.35);
+  border-radius: 18px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 180px;
-  height: 180px;
-  border: 1px solid #c8a95a;
-  border-radius: 10px;
-  background: rgba(0,0,0,0.3);
-  text-decoration: none;
-  color: #e6e6e6;
-  overflow: hidden;
-  transition: 0.3s;
-  position: relative;
+  gap: 14px;
+
+  cursor: pointer;
+  transition: all 0.35s ease;
+  backdrop-filter: blur(6px);
 }
 
-.contact-card img {
-  max-width: 80px;
-  max-height: 80px;
-  object-fit: contain;
-  transition: transform 0.3s;
-}
-
-.contact-card span {
-  margin-top: 10px;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
+/* hover карточки */
 .contact-card:hover {
-  background: #c8a95a;
-  transform: translateY(-4px);
-  color: #08140f;
+  transform: translateY(-8px) scale(1.04);
+  border-color: rgba(255, 215, 120, 0.7);
+  box-shadow:
+    0 0 18px rgba(43, 179, 163, 0.25),
+    inset 0 0 12px rgba(43, 179, 163, 0.15);
+}
+
+/* логотип */
+.contact-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
 .contact-card:hover img {
-  transform: scale(1.2);
+  transform: scale(1.18);
 }
 
+/* текст */
+.contact-card span {
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: #e6e6e6;
+  transition: all 0.3s ease;
+}
+
+/* glow текста */
 .contact-card:hover span {
-  opacity: 1;
+  color: #ffd700;
+  text-shadow:
+    0 0 6px rgba(255, 215, 0, 0.8),
+    0 0 14px rgba(255, 215, 0, 0.6),
+    0 0 24px rgba(255, 215, 0, 0.4);
 }
 
 .btn.secondary {
@@ -236,11 +254,6 @@ h2 {
   text-align: center;
 }
 
-.temple-img {
-  width: 300px;
-  margin-bottom: 20px;
-}
-
 .back-btn {
   margin-top: 20px;
   padding: 10px 18px;
@@ -256,14 +269,6 @@ h2 {
   color: #08140f;
 }
 
-
-.project-block {
-  height: 100vh;
-  background: #0f2a1d;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .project-block.darker {
   background: #0b1f16;
@@ -465,12 +470,6 @@ h2 {
   100% { opacity: 0.7; transform: scaleX(1); }
 }
 
-.github-icon {
-  width: 48px;
-  opacity: 0.85;
-  transition: 0.3s;
-  filter: drop-shadow(0 0 6px rgba(0,0,0,0.4));
-}
 
 .github-icon:hover {
   opacity: 1;
@@ -552,29 +551,47 @@ h2 {
   }
 }
 
-.monkey-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 60px;
-  justify-items: center;
-  margin: 40px 0;
-}
+/* ===== INTRO RUNNER ===== */
 
-.monkey-holder {
+.intro-scene {
   position: relative;
-  width: 260px;
-  transition: 0.3s;
-}
-
-.monkey-holder:hover {
-  transform: translateY(-12px);
-}
-
-.monkey-bg {
   width: 100%;
-  filter: drop-shadow(0 0 25px rgba(0,0,0,0.7));
+  height: 220px;
+  overflow: hidden;
+  margin-bottom: 30px;
 }
 
+.runner {
+  position: absolute;
+  left: -260px;          /* старт дальше слева */
+  bottom: -20px;         /* 👈 опустили ниже */
+  width: 170px;          /* чуть крупнее */
+  z-index: 3;
+}
+
+/* золотой след */
+.trail {
+  position: absolute;
+  bottom: 10px;          /* опустили вместе с обезьяной */
+  left: 0;
+  height: 6px;
+  width: 0;
+  background: linear-gradient(90deg, #ffd700, #ffb700);
+  box-shadow: 0 0 14px rgba(255,215,0,0.9);
+  border-radius: 4px;
+  z-index: 2;
+}
+
+/* скрытие */
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* плавное появление */
+.contact-grid {
+  transition: opacity 0.8s ease;
+}
 /* ЛОГО В ЦЕНТРЕ */
 .company-logo {
   position: absolute;
@@ -589,4 +606,146 @@ h2 {
 .company-logo:hover {
   transform: translate(-50%, -40%) scale(1.15);
   filter: drop-shadow(0 0 12px rgba(255,215,120,0.7));
+}
+
+.scroll-indicator {
+  margin: 30px auto 0;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  position: relative;
+  animation: arrowFloat 2s ease-in-out infinite;
+}
+
+.chevron {
+  width: 28px;
+  height: 28px;
+  border-right: 4px solid #00ff9d;
+  border-bottom: 4px solid #00ff9d;
+  transform: rotate(45deg);
+  margin: auto;
+  margin-top: 10px;
+  filter:
+    drop-shadow(0 0 6px #00ff9d)
+    drop-shadow(0 0 14px #00ff9d);
+}
+
+/* плавное покачивание */
+@keyframes arrowFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+/* hover */
+.scroll-indicator:hover .chevron {
+  filter:
+    drop-shadow(0 0 10px #00ff9d)
+    drop-shadow(0 0 25px #00ff9d)
+    drop-shadow(0 0 45px #00ff9d);
+}
+
+@keyframes floatArrow {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+.project-block {
+  position: relative;
+}
+
+/* светящаяся граница сверху каждой секции кроме первой */
+.project-block:not(:first-of-type)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 60%;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(43,179,163,0.8),
+    transparent
+  );
+
+  box-shadow: 0 0 12px rgba(43,179,163,0.6);
+}
+
+@media (max-width: 768px) {
+
+  .project-inner {
+    width: 92%;
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+    padding: 28px 20px;
+  }
+
+  .project-text h2 {
+    width: 100%;
+    font-size: 26px;
+  }
+
+  .glyph-big {
+    width: 220px;
+  }
+
+  .project-title {
+    font-size: 28px;
+  }
+
+  .project-desc {
+    font-size: 15px;
+  }
+
+  .gold-ribbon {
+    width: 320px;
+    height: 70px;
+  }
+
+  .temple-img {
+    width: 220px;
+  }
+}
+.projects-wrapper {
+  scroll-snap-type: y mandatory;
+}
+
+/* каждая секция проекта */
+.project-section {
+  scroll-snap-align: start;
+  min-height: 100vh;
+  position: relative;
+}
+.project-section {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+/* мобилки — fallback (fixed там глючит) */
+@media (max-width: 768px) {
+  .project-section {
+    background-attachment: scroll;
+  }
+}
+.project-section::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 120px;
+
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 255, 150, 0.15),
+    rgba(0, 0, 0, 0.8)
+  );
+
+  pointer-events: none;
 }
