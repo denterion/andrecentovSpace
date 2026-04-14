@@ -1,0 +1,232 @@
+:root {
+  --bg: #070f0c;
+  --panel: #0f1d17;
+  --panel-2: #152821;
+  --line: #2e604c;
+  --text: #d6e9df;
+  --muted: #8ca598;
+  --gold: #d2ab66;
+  --green: #54be96;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "VT323", monospace;
+  min-height: 100vh;
+  color: var(--text);
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.22) 1px, transparent 1px),
+    radial-gradient(circle at 15% 10%, #173126 0%, var(--bg) 62%);
+  background-size: 28px 28px, 28px 28px, cover;
+  letter-spacing: 0.4px;
+}
+
+.shell {
+  width: min(1180px, 94vw);
+  margin: 24px auto;
+  border: 3px solid var(--line);
+  box-shadow: 0 0 0 3px #0b1712, 0 0 0 6px #162a21, 0 18px 70px rgba(0, 0, 0, 0.55);
+  background: linear-gradient(180deg, rgba(11, 21, 16, 0.98), rgba(9, 17, 13, 0.98));
+}
+
+.top {
+  border-bottom: 3px solid var(--line);
+  padding: 18px 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(180deg, #14271e, #102017);
+}
+
+.top h1 {
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(12px, 2.1vw, 20px);
+  line-height: 1.7;
+  text-transform: uppercase;
+  color: #eefdf5;
+}
+
+.top p {
+  font-size: 27px;
+  color: var(--muted);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border: 2px solid var(--line);
+  text-decoration: none;
+  color: var(--text);
+  background: var(--panel-2);
+  padding: 7px 12px;
+  font-size: 24px;
+  transition: 0.15s ease;
+}
+
+.btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 2px 2px 0 #224433;
+  border-color: var(--green);
+  color: #f0fff8;
+}
+
+.intro-panel {
+  margin: 18px 20px 0;
+  border: 2px solid var(--line);
+  background: var(--panel);
+  padding: 14px;
+}
+
+.intro-copy h2 {
+  font-family: "Press Start 2P", monospace;
+  color: var(--gold);
+  font-size: clamp(10px, 1.2vw, 14px);
+  line-height: 1.6;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.intro-copy p {
+  color: var(--muted);
+  font-size: 25px;
+  line-height: 1.25;
+}
+
+.intro-scene {
+  position: relative;
+  margin-top: 12px;
+  border: 2px solid #2a5140;
+  background: linear-gradient(180deg, #11241b, #0f1f18);
+  height: 180px;
+  overflow: hidden;
+}
+
+.runner {
+  position: absolute;
+  left: -210px;
+  bottom: 10px;
+  width: 150px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.trail {
+  position: absolute;
+  left: 0;
+  bottom: 24px;
+  width: 0;
+  height: 4px;
+  background: linear-gradient(90deg, rgba(210, 171, 102, 0.95), rgba(84, 190, 150, 0.95));
+  box-shadow: 0 0 12px rgba(84, 190, 150, 0.45);
+}
+
+.contact-grid {
+  margin: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 14px;
+  opacity: 0;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.contact-card {
+  border: 2px solid var(--line);
+  background: var(--panel-2);
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 12px;
+  align-items: center;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.15s ease;
+  color: var(--text);
+  font: inherit;
+}
+
+.contact-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 2px 2px 0 #234535;
+  border-color: var(--gold);
+}
+
+.icon-wrap {
+  border: 2px solid #2f5946;
+  background: #12261d;
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+}
+
+.icon-wrap img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  filter: saturate(0.15) contrast(1.1) brightness(1.02);
+  transition: 0.15s ease;
+}
+
+.contact-card:hover .icon-wrap img {
+  filter: saturate(1) contrast(1.12) brightness(1.08) drop-shadow(0 0 7px rgba(84, 190, 150, 0.35));
+  transform: scale(1.06);
+}
+
+.name {
+  display: block;
+  grid-column: 2;
+  font-size: 31px;
+  line-height: 1;
+  color: #e9fbf2;
+}
+
+.meta {
+  display: block;
+  grid-column: 2;
+  margin-top: -6px;
+  font-size: 21px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+footer {
+  border-top: 3px solid var(--line);
+  padding: 13px 22px;
+  font-size: 23px;
+  color: #8ba395;
+  background: #0c1813;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-scene {
+    height: 155px;
+  }
+
+  .runner {
+    width: 128px;
+    bottom: 8px;
+  }
+}

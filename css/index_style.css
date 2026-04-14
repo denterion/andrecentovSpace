@@ -1,0 +1,204 @@
+:root {
+      --bg: #08110d;
+      --panel: #102118;
+      --panel-2: #152b1f;
+      --line: #2a5d46;
+      --text: #d5e6dd;
+      --muted: #8fa79b;
+      --accent: #d0a85f;
+      --accent-2: #53bf94;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "VT323", monospace;
+      color: var(--text);
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.25) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.2) 1px, transparent 1px),
+        radial-gradient(circle at 20% 10%, #173426 0%, var(--bg) 55%);
+      background-size: 24px 24px, 24px 24px, cover;
+      letter-spacing: 0.5px;
+    }
+
+    .frame {
+      width: min(1080px, 92vw);
+      margin: 26px auto;
+      border: 3px solid var(--line);
+      box-shadow:
+        0 0 0 3px #0c1813,
+        0 0 0 6px #1a3025,
+        0 24px 80px rgba(0, 0, 0, 0.5);
+      background: linear-gradient(180deg, rgba(13, 25, 19, 0.98), rgba(10, 19, 14, 0.98));
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 22px;
+      border-bottom: 3px solid var(--line);
+      background: linear-gradient(180deg, #13271d, #102117);
+    }
+
+    .logo {
+      font-family: "Press Start 2P", monospace;
+      font-size: 11px;
+      color: var(--accent);
+      line-height: 1.7;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      display: inline-block;
+      text-decoration: none;
+      color: var(--text);
+      border: 2px solid var(--line);
+      background: var(--panel-2);
+      padding: 8px 12px;
+      font-size: 24px;
+      transition: 0.15s ease;
+    }
+
+    .nav-btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 2px 2px 0 #204433;
+      border-color: var(--accent-2);
+      color: #e9fff4;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 20px;
+      padding: 24px;
+    }
+
+    .panel {
+      border: 2px solid var(--line);
+      background: var(--panel);
+      padding: 18px;
+    }
+
+    .title {
+      font-family: "Press Start 2P", monospace;
+      font-size: clamp(18px, 2.2vw, 28px);
+      line-height: 1.7;
+      text-transform: uppercase;
+      color: #e8f7ef;
+      text-shadow: 0 0 10px rgba(83, 191, 148, 0.2);
+      margin-bottom: 16px;
+    }
+
+    .role {
+      color: var(--accent);
+      font-size: 30px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .text {
+      font-size: 30px;
+      color: var(--muted);
+      max-width: 58ch;
+      line-height: 1.35;
+    }
+
+    .cta {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      text-decoration: none;
+      font-size: 26px;
+      padding: 8px 14px;
+      border: 2px solid;
+      transition: 0.15s ease;
+    }
+
+    .btn-main {
+      border-color: var(--accent);
+      color: #271b06;
+      background: var(--accent);
+    }
+
+    .btn-ghost {
+      border-color: var(--accent-2);
+      color: var(--accent-2);
+      background: transparent;
+    }
+
+    .btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 2px 2px 0 #1e3f30;
+    }
+
+    .portrait-wrap {
+      display: grid;
+      place-items: center;
+      padding: 10px;
+      border: 2px solid var(--line);
+      background: linear-gradient(180deg, #13281d, #0d1d15);
+      min-height: 320px;
+    }
+
+    .portrait {
+      width: min(280px, 80%);
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+      border: 3px solid #315f49;
+      box-shadow: 0 0 0 3px #102117, 0 0 24px rgba(83, 191, 148, 0.15);
+    }
+
+    .status {
+      margin-top: 20px;
+      border: 2px solid var(--line);
+      background: #0e1c15;
+      padding: 14px 16px;
+      font-size: 27px;
+      color: #9ab2a6;
+      line-height: 1.35;
+    }
+
+    .status strong {
+      color: #e2f4ea;
+    }
+
+    footer {
+      border-top: 3px solid var(--line);
+      padding: 14px 22px;
+      color: #84a194;
+      font-size: 23px;
+      background: #0c1812;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 860px) {
+      .content {
+        grid-template-columns: 1fr;
+      }
+
+      .portrait-wrap {
+        min-height: 220px;
+      }
+
+      .title {
+        line-height: 1.8;
+      }
+    }
