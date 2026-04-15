@@ -3,65 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contacts | Andrew</title>
+  <title>Contact | Andrew Protsenko</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/contacts_style.css">
-  <script src="js/script.js" defer></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@18.3.1",
+        "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
+        "htm": "https://esm.sh/htm@3.1.1"
+      }
+    }
+  </script>
+  <script type="module" src="js/app.js"></script>
 </head>
 <body>
-  <main class="shell">
-    <header class="top">
-      <div>
-        <h1>Communication Console</h1>
-        <p>Professional channels for collaboration and project coordination.</p>
-      </div>
-      <nav class="actions">
-        <a class="btn" href="index.html">Home</a>
-        <a class="btn" href="projects.html">Projects</a>
-      </nav>
-    </header>
-
-    <section class="intro-panel">
-      <div class="intro-copy">
-        <h2>Verified Contact Flow</h2>
-        <p>Signal starts with the monkey courier. After secure transit, all channels become available below.</p>
-      </div>
-
-      <div class="intro-scene" id="introScene" aria-label="Monkey runner animation">
-        <div class="trail" id="trail"></div>
-        <img src="images/new_monkey.png" class="runner" id="runner" alt="Monkey courier">
-      </div>
-    </section>
-
-    <section class="contact-grid hidden" id="contactsFinal">
-      <button class="contact-card" onclick="go('aHR0cHM6Ly9o aC5y dS9yZXN1bWUvMzc5YTBjNDFmZjBmNDk0MTcyMDAzOWVkMWY1NTZjNmU0YTcxNGI=')" aria-label="Open hh.ru profile">
-        <span class="icon-wrap"><img src="images/hh.png" alt="hh.ru"></span>
-        <span class="name">hh.ru</span>
-        <span class="meta">Primary CV</span>
-      </button>
-
-      <button class="contact-card" onclick="go('aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL2FuZHJldy1wcm90c2Vua28tNzI1MDUzM2Iw')" aria-label="Open LinkedIn profile">
-        <span class="icon-wrap"><img src="images/linken.png" alt="LinkedIn"></span>
-        <span class="name">LinkedIn</span>
-        <span class="meta">Professional profile</span>
-      </button>
-
-      <button class="contact-card" onclick="go('aHR0cHM6Ly9kaXNjb3JkLmNvbS91c2Vycy83MTk0OTA2MTcxMzQxNTM4MzA=')" aria-label="Open Discord profile">
-        <span class="icon-wrap"><img src="images/ds.png" alt="Discord"></span>
-        <span class="name">Discord</span>
-        <span class="meta">Fast communication</span>
-      </button>
-
-      <button class="contact-card" onclick="go('aHR0cHM6Ly90Lm1lL2hhbm5hWG1vbnRhbmE=')" aria-label="Open Telegram profile">
-        <span class="icon-wrap"><img src="images/telegram.png" alt="Telegram"></span>
-        <span class="name">Telegram</span>
-        <span class="meta">Direct messaging</span>
-      </button>
-    </section>
-
-    <footer>Andrecentov.space // Contact Interface Online</footer>
-  </main>
+  <div id="app" data-page="contacts"></div>
 </body>
 </html>
