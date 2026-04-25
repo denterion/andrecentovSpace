@@ -1,0 +1,81 @@
+export const homeData = {
+  nav: [
+    { href: "#services", label: "Focus" },
+    { href: "#projects-preview", label: "Projects" },
+    { href: "#process", label: "Process" },
+    { href: "projects.html", label: "Full Portfolio" },
+    { href: "contacts.html", label: "Contact" },
+  ],
+  heroPoints: ["Go services", "PostgreSQL design", "REST and gRPC APIs", "Containerized delivery"],
+  sideCards: [
+    {
+      label: "Primary stack",
+      title: "Go / PostgreSQL / Docker",
+      text: "Backend foundations for services that need predictable behavior and clean structure.",
+    },
+    {
+      label: "What I optimize for",
+      title: "Clarity under growth",
+      text: "Readable services, practical abstractions, and architecture that stays maintainable as scope increases.",
+    },
+  ],
+  profileItems: [
+    "API and service design",
+    "Database-backed applications",
+    "Observability-aware implementation",
+    "Production-oriented engineering",
+  ],
+  features: [
+    ["01", "Service Architecture", "Designing backend structure, module boundaries, and service responsibilities so the codebase remains understandable after the first release."],
+    ["02", "API Development", "Building REST and gRPC interfaces with clear contracts, predictable error handling, and implementation that supports future iteration."],
+    ["03", "Data and Persistence", "Creating PostgreSQL-backed systems with schema decisions made for long-term maintainability, not only short-term convenience."],
+    ["04", "Operational Readiness", "Containerization, logging, and service behavior designed with real deployment and debugging needs in mind."],
+    ["05", "Workflow Automation", "Command-driven systems and automation flows that remove manual steps while keeping execution controlled and explicit."],
+    ["06", "Distributed Communication", "Components that interact through events, background processing, and service contracts without turning the architecture into noise."],
+  ],
+  previewProjects: [
+    {
+      icon: "images/wise.png",
+      alt: "API service illustration",
+      pill: "Stable foundation",
+      title: "API Service",
+      text: "A Go REST API with JWT authentication, PostgreSQL, and Docker-based delivery built around durable request flow and maintainable service structure.",
+      items: ["Authentication and access flow", "Schema-oriented backend design", "Containerized development and deployment"],
+    },
+    {
+      icon: "images/eternity.png",
+      alt: "Automation bot illustration",
+      pill: "Automation",
+      title: "Telegram Bot",
+      text: "A command-driven automation bot designed for scheduling flows and repeatable operational actions with predictable execution paths.",
+      items: ["Message-driven backend logic", "Reusable command structure", "Extensible workflow design"],
+    },
+    {
+      icon: "images/flower.png",
+      alt: "gRPC microservice illustration",
+      pill: "Distributed systems",
+      title: "gRPC Microservice",
+      text: "A service-to-service component using gRPC and Kafka with attention to contracts, asynchronous communication, and observability.",
+      items: ["gRPC communication model", "Kafka event handling", "Integration-oriented backend design"],
+    },
+  ],
+  principles: [
+    ["Readable architecture", "System structure should be understandable by another engineer without verbal decoding."],
+    ["Predictable behavior", "Error handling, interfaces, and data flow should behave consistently under normal and failure conditions."],
+    ["Practical abstractions", "I avoid complexity that looks sophisticated but does not improve delivery or maintenance."],
+    ["Long-term maintainability", "Good implementation is not only fast to write, but also realistic to support, debug, and extend."],
+  ],
+  process: [
+    ["01", "Clarify the system boundary", "Define the service responsibility, the core flows, and the interfaces that matter before implementation grows in the wrong direction."],
+    ["02", "Model data and behavior", "Shape the API, database structure, and service contracts together so the implementation does not fight the domain model later."],
+    ["03", "Implement with operational context", "Add logging, clear service flow, and delivery conventions early instead of treating operations as an afterthought."],
+    ["04", "Keep the result extensible", "Make future changes possible by keeping code paths understandable and design choices explicit."],
+  ],
+  stackGroups: [
+    ["Languages and runtime", ["Go", "SQL", "Bash"]],
+    ["Data and storage", ["PostgreSQL", "Schema design", "Query design"]],
+    ["Interfaces", ["REST", "gRPC", "JWT"]],
+    ["Infrastructure and delivery", ["Docker", "Service logging", "Deployment setup"]],
+    ["Messaging and workflows", ["Kafka", "Schedulers", "Bots and automation"]],
+  ],
+};
