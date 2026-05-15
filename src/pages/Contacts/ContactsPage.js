@@ -3,36 +3,38 @@ import { Header } from "../../components/Header.js";
 import { Footer } from "../../components/Footer.js";
 import { contactsData } from "./contactsData.js";
 import { decodeUrl } from "../../utils/decodeUrl.js";
+import { t, translateTree } from "../../lib/i18n.js";
 
-export function ContactsPage() {
+export function ContactsPage({ lang, setLang }) {
+  const data = translateTree(contactsData, lang);
+
   return html`
     <main className="page-shell">
-      <${Header} title="Contact" nav=${contactsData.nav} />
+      <${Header} title=${t("Contact", lang)} nav=${data.nav} lang=${lang} setLang=${setLang} />
 
       <section className="hero card">
         <div>
-          <p className="section-kicker">Direct communication</p>
-          <h1>Available for backend roles, engineering collaboration, and project discussion.</h1>
+          <p className="section-kicker">${t("Direct communication", lang)}</p>
+          <h1>${t("Available for backend roles, engineering collaboration, and project discussion.", lang)}</h1>
           <p>
-            If you want to discuss Go development, backend architecture, APIs, service design, or one of the projects from the portfolio,
-            choose the platform that is most convenient for you below.
+            ${t("If you want to discuss Go development, backend architecture, APIs, service design, or one of the projects from the portfolio, choose the platform that is most convenient for you below.", lang)}
           </p>
         </div>
         <aside className="hero-note">
-          <span className="label">Best use cases</span>
+          <span className="label">${t("Best use cases", lang)}</span>
           <ul className="compact-list">
-            ${contactsData.useCases.map((item) => html`<li key=${item}>${item}</li>`)}
+            ${data.useCases.map((item) => html`<li key=${item}>${item}</li>`)}
           </ul>
         </aside>
       </section>
 
       <section className="section">
         <div className="section-head">
-          <p className="section-kicker">Channels</p>
-          <h2>Professional and direct ways to reach me.</h2>
+          <p className="section-kicker">${t("Channels", lang)}</p>
+          <h2>${t("Professional and direct ways to reach me.", lang)}</h2>
         </div>
         <div className="contact-grid">
-          ${contactsData.channels.map(([icon, name, meta, encoded]) => html`
+          ${data.channels.map(([icon, name, meta, encoded]) => html`
             <button
               key=${name}
               className="contact-card"
@@ -52,7 +54,7 @@ export function ContactsPage() {
 
       <section className="section">
         <div className="info-grid">
-          ${contactsData.infoCards.map((card) => html`
+          ${data.infoCards.map((card) => html`
             <article key=${card.title} className="card info-card">
               <p className="section-kicker">${card.kicker}</p>
               <h3>${card.title}</h3>

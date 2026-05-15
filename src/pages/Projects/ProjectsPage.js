@@ -2,23 +2,25 @@ import { html } from "../../lib/html.js";
 import { Header } from "../../components/Header.js";
 import { Footer } from "../../components/Footer.js";
 import { projectsData } from "./projectsData.js";
+import { t, translateTree } from "../../lib/i18n.js";
 
-export function ProjectsPage() {
+export function ProjectsPage({ lang, setLang }) {
+  const data = translateTree(projectsData, lang);
+
   return html`
     <main className="page-shell">
-      <${Header} title="Selected Projects" nav=${projectsData.nav} />
+      <${Header} title=${t("Selected Projects", lang)} nav=${data.nav} lang=${lang} setLang=${setLang} />
 
       <section className="hero card">
         <div className="hero-copy">
-          <p className="section-kicker">Portfolio</p>
-          <h1>Projects that show how I approach backend systems in practice.</h1>
+          <p className="section-kicker">${t("Portfolio", lang)}</p>
+          <h1>${t("Projects that show how I approach backend systems in practice.", lang)}</h1>
           <p>
-            Instead of showing only links, this page explains what each project solves, which engineering choices matter,
-            and what kind of backend responsibility the project represents.
+            ${t("Instead of showing only links, this page explains what each project solves, which engineering choices matter, and what kind of backend responsibility the project represents.", lang)}
           </p>
         </div>
         <div className="hero-metrics">
-          ${projectsData.metrics.map(([label, value]) => html`
+          ${data.metrics.map(([label, value]) => html`
             <article key=${label}>
               <span className="label">${label}</span>
               <strong>${value}</strong>
@@ -29,18 +31,18 @@ export function ProjectsPage() {
 
       <section className="section" id="cases">
         <div className="section-head">
-          <p className="section-kicker">Case studies</p>
-          <h2>Three project types, three different backend concerns.</h2>
+          <p className="section-kicker">${t("Case studies", lang)}</p>
+          <h2>${t("Three project types, three different backend concerns.", lang)}</h2>
         </div>
 
-        ${projectsData.cases.map((entry) => html`
+        ${data.cases.map((entry) => html`
           <article key=${entry.title} className="case card">
             <div className="case-side">
               <div className="icon-frame">
                 <img src=${entry.icon} alt=${entry.alt} />
               </div>
               <span className="pill">${entry.pill}</span>
-              <a className="repo-link" href=${entry.repo} target="_blank" rel="noopener noreferrer">Open Repository</a>
+              <a className="repo-link" href=${entry.repo} target="_blank" rel="noopener noreferrer">${t("Open Repository", lang)}</a>
             </div>
             <div className="case-main">
               <h3>${entry.title}</h3>
@@ -63,11 +65,11 @@ export function ProjectsPage() {
 
       <section className="section" id="capabilities">
         <div className="section-head">
-          <p className="section-kicker">Capabilities</p>
-          <h2>What these projects collectively show.</h2>
+          <p className="section-kicker">${t("Capabilities", lang)}</p>
+          <h2>${t("What these projects collectively show.", lang)}</h2>
         </div>
         <div className="capability-grid">
-          ${projectsData.capabilities.map(([title, text]) => html`
+          ${data.capabilities.map(([title, text]) => html`
             <article key=${title} className="card capability">
               <h3>${title}</h3>
               <p>${text}</p>
@@ -79,10 +81,10 @@ export function ProjectsPage() {
       <section className="section">
         <div className="card cta-panel">
           <div>
-            <p className="section-kicker">Next step</p>
-            <h2>If you want to discuss one of these projects or a similar backend problem, use the contact page.</h2>
+            <p className="section-kicker">${t("Next step", lang)}</p>
+            <h2>${t("If you want to discuss one of these projects or a similar backend problem, use the contact page.", lang)}</h2>
           </div>
-          <a className="button" href="contacts.html">Open Contacts</a>
+          <a className="button" href="contacts.html">${t("Open Contacts", lang)}</a>
         </div>
       </section>
 
