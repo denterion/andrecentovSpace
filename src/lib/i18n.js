@@ -158,6 +158,8 @@ const ru = {
   "Project review and portfolio questions": "Вопросы по проектам и портфолио",
   "Channels": "Каналы",
   "Professional and direct ways to reach me.": "Профессиональные и прямые способы связи.",
+  "Email": "\u041f\u043e\u0447\u0442\u0430",
+  "Direct email for collaboration and project discussion": "\u041f\u0440\u044f\u043c\u0430\u044f \u043f\u043e\u0447\u0442\u0430 \u0434\u043b\u044f \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u0447\u0435\u0441\u0442\u0432\u0430 \u0438 \u043e\u0431\u0441\u0443\u0436\u0434\u0435\u043d\u0438\u044f \u043f\u0440\u043e\u0435\u043a\u0442\u043e\u0432",
   "Resume, experience summary, and role information": "Резюме, опыт и информация о ролях",
   "Professional profile and network communication": "Профессиональный профиль и деловое общение",
   "Fast communication for direct technical discussion": "Быстрая связь для прямого технического обсуждения",
