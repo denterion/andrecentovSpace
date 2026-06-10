@@ -9,6 +9,7 @@ export const contactsData = {
     "Project review and portfolio questions",
   ],
   channels: [
+    [null, "Email", "Direct email for collaboration and project discussion", "bWFpbHRvOmNlbnRvdmFuZHJlakBnbWFpbC5jb20="],
     ["images/hh.png", "hh.ru", "Resume, experience summary, and role information", "aHR0cHM6Ly9o aC5y dS9yZXN1bWUvMzc5YTBjNDFmZjBmNDk0MTcyMDAzOWVkMWY1NTZjNmU0YTcxNGI="],
     ["images/linken.png", "LinkedIn", "Professional profile and network communication", "aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL2FuZHJldy1wcm90c2Vua28tNzI1MDUzM2Iw"],
     ["images/ds.png", "Discord", "Fast communication for direct technical discussion", "aHR0cHM6Ly9kaXNjb3JkLmNvbS91c2Vycy83MTk0OTA2MTcxMzQxNTM4MzA="],

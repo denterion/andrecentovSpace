@@ -42,7 +42,11 @@ export function ContactsPage({ lang, setLang }) {
               aria-label=${`Open ${name} profile`}
               type="button"
             >
-              <span className="icon-wrap"><img src=${icon} alt=${name} /></span>
+              <span className="icon-wrap">
+                ${icon
+                  ? html`<img src=${icon} alt=${name} />`
+                  : html`<span className="mail-icon" aria-hidden="true">@</span>`}
+              </span>
               <span className="contact-body">
                 <span className="name">${name}</span>
                 <span className="meta">${meta}</span>
