@@ -12,7 +12,7 @@ export function HomePage({ lang, setLang }) {
       <${Header} title=${t("Backend Go Developer", lang)} nav=${data.nav} lang=${lang} setLang=${setLang} />
 
       <section className="hero">
-        <div className="hero-main card">
+        <div className="hero-main">
           <p className="section-kicker">${t("Backend engineering for product teams", lang)}</p>
           <h1>${t("I design and build backend systems that stay understandable as the product grows.", lang)}</h1>
           <p className="hero-text">
@@ -27,24 +27,29 @@ export function HomePage({ lang, setLang }) {
           </div>
         </div>
 
-        <aside className="hero-side">
-          ${data.sideCards.map((card) => html`
-            <article key=${card.title} className="card stat-card">
-              <span className="label">${card.label}</span>
-              <strong>${card.title}</strong>
-              <p>${card.text}</p>
-            </article>
-          `)}
-          <article className="card profile-card">
-            <img src="images/avatar.png" alt="Portrait of Andrew Protsenko" className="portrait" />
-            <div>
-              <p className="label">${t("Work profile", lang)}</p>
-              <ul className="compact-list">
-                ${data.profileItems.map((item) => html`<li key=${item}>${item}</li>`)}
-              </ul>
-            </div>
-          </article>
+        <aside className="hero-profile">
+          <img src="images/avatar.png" alt="Portrait of Andrew Protsenko" className="portrait" />
+          <div>
+            <p className="label">${t("Work profile", lang)}</p>
+            <ul className="compact-list">
+              ${data.profileItems.map((item) => html`<li key=${item}>${item}</li>`)}
+            </ul>
+          </div>
         </aside>
+      </section>
+
+      <section className="orientation-strip" aria-label="Page overview">
+        ${data.sideCards.map((card) => html`
+          <article key=${card.title} className="orientation-item">
+            <span className="label">${card.label}</span>
+            <strong>${card.title}</strong>
+            <p>${card.text}</p>
+          </article>
+        `)}
+        <a className="orientation-link" href="#services">
+          <span className="label">${t("Next step", lang)}</span>
+          <strong>${t("What I can help with", lang)}</strong>
+        </a>
       </section>
 
       <section className="section" id="services">
