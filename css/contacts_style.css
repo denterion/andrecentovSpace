@@ -123,8 +123,14 @@ body {
   height: 24px;
   border: 0;
   border-radius: 999px;
-  background: var(--accent);
+  background: #aab4c0;
   cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.language-toggle.is-english {
+  background: #f97316;
+  box-shadow: 0 8px 18px rgba(249, 115, 22, 0.22);
 }
 
 .language-toggle-thumb {
@@ -252,6 +258,19 @@ body {
   width: 40px;
   height: 40px;
   object-fit: contain;
+}
+
+.mail-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  background: #f97316;
+  color: #fff;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 24px;
+  font-weight: 700;
 }
 
 .name {

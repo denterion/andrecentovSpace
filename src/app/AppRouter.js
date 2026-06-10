@@ -5,7 +5,7 @@ import { ProjectsPage } from "../pages/Projects/ProjectsPage.js";
 import { ContactsPage } from "../pages/Contacts/ContactsPage.js";
 
 export function AppRouter({ page }) {
-  const [lang, setLang] = useState(() => localStorage.getItem("site-lang") || "en");
+  const [lang, setLang] = useState(() => localStorage.getItem("site-lang") || "ru");
 
   useEffect(() => {
     localStorage.setItem("site-lang", lang);

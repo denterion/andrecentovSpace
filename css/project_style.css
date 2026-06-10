@@ -124,8 +124,14 @@ body {
   height: 24px;
   border: 0;
   border-radius: 999px;
-  background: var(--accent);
+  background: #aab4c0;
   cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.language-toggle.is-english {
+  background: #f97316;
+  box-shadow: 0 8px 18px rgba(249, 115, 22, 0.22);
 }
 
 .language-toggle-thumb {

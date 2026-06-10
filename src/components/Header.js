@@ -17,7 +17,7 @@ export function Header({ title, nav, lang, setLang }) {
           <span className=${lang === "ru" ? "is-active" : ""}>RU</span>
           <button
             type="button"
-            className="language-toggle"
+            className=${`language-toggle ${lang === "en" ? "is-english" : "is-russian"}`}
             aria-label="Switch language"
             aria-pressed=${lang === "en"}
             onClick=${() => setLang(lang === "ru" ? "en" : "ru")}
