@@ -14,9 +14,9 @@ export function ProjectsPage({ lang, setLang }) {
       <section className="hero card">
         <div className="hero-copy">
           <p className="section-kicker">${t("Portfolio", lang)}</p>
-          <h1>${t("Projects that show how I approach backend systems in practice.", lang)}</h1>
+          <h1>${t("Backend projects with code a reviewer can inspect.", lang)}</h1>
           <p>
-            ${t("Instead of showing only links, this page explains what each project solves, which engineering choices matter, and what kind of backend responsibility the project represents.", lang)}
+            ${t("Each case explains the problem, the architecture direction, and the repository evidence that matters for a recruiter, hiring manager, or technical interviewer.", lang)}
           </p>
         </div>
         <div className="hero-metrics">
@@ -32,7 +32,7 @@ export function ProjectsPage({ lang, setLang }) {
       <section className="section" id="cases">
         <div className="section-head">
           <p className="section-kicker">${t("Case studies", lang)}</p>
-          <h2>${t("Three project types, three different backend concerns.", lang)}</h2>
+          <h2>${t("Three projects mapped to common backend responsibilities.", lang)}</h2>
         </div>
 
         ${data.cases.map((entry) => html`
@@ -82,7 +82,8 @@ export function ProjectsPage({ lang, setLang }) {
         <div className="card cta-panel">
           <div>
             <p className="section-kicker">${t("Next step", lang)}</p>
-            <h2>${t("If you want to discuss one of these projects or a similar backend problem, use the contact page.", lang)}</h2>
+            <h2>${t("Want to review the code or discuss a backend role?", lang)}</h2>
+            <p>${t("The contact page has direct links for email, LinkedIn, hh.ru, Telegram, and GitHub.", lang)}</p>
           </div>
           <a className="button" href="contacts.html">${t("Open Contacts", lang)}</a>
         </div>

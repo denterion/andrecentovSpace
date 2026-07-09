@@ -2,7 +2,6 @@ import { html } from "../../lib/html.js";
 import { Header } from "../../components/Header.js";
 import { Footer } from "../../components/Footer.js";
 import { contactsData } from "./contactsData.js";
-import { decodeUrl } from "../../utils/decodeUrl.js";
 import { t, translateTree } from "../../lib/i18n.js";
 
 export function ContactsPage({ lang, setLang }) {
@@ -15,9 +14,9 @@ export function ContactsPage({ lang, setLang }) {
       <section className="hero card">
         <div>
           <p className="section-kicker">${t("Direct communication", lang)}</p>
-          <h1>${t("Available for backend roles, engineering collaboration, and project discussion.", lang)}</h1>
+          <h1>${t("Available for Go backend roles and technical conversations.", lang)}</h1>
           <p>
-            ${t("If you want to discuss Go development, backend architecture, APIs, service design, or one of the projects from the portfolio, choose the platform that is most convenient for you below.", lang)}
+            ${t("For recruiting, project review, or engineering collaboration, use the channel that fits your workflow. Email, LinkedIn, hh.ru, GitHub, Telegram, and Discord are all listed directly.", lang)}
           </p>
         </div>
         <aside className="hero-note">
@@ -34,24 +33,25 @@ export function ContactsPage({ lang, setLang }) {
           <h2>${t("Professional and direct ways to reach me.", lang)}</h2>
         </div>
         <div className="contact-grid">
-          ${data.channels.map(([icon, name, meta, encoded]) => html`
-            <button
-              key=${name}
+          ${data.channels.map((channel) => html`
+            <a
+              href=${channel.href}
+              key=${channel.name}
               className="contact-card"
-              onClick=${() => window.open(decodeUrl(encoded), "_blank", "noopener,noreferrer")}
-              aria-label=${`Open ${name} profile`}
-              type="button"
+              target=${channel.external ? "_blank" : undefined}
+              rel=${channel.external ? "noopener noreferrer" : undefined}
+              aria-label=${`Open ${channel.name} profile`}
             >
               <span className="icon-wrap">
-                ${icon
-                  ? html`<img src=${icon} alt=${name} />`
+                ${channel.icon
+                  ? html`<img src=${channel.icon} alt=${channel.name} />`
                   : html`<span className="mail-icon" aria-hidden="true">@</span>`}
               </span>
               <span className="contact-body">
-                <span className="name">${name}</span>
-                <span className="meta">${meta}</span>
+                <span className="name">${channel.name}</span>
+                <span className="meta">${channel.meta}</span>
               </span>
-            </button>
+            </a>
           `)}
         </div>
       </section>

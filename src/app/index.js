@@ -6,5 +6,3 @@ const container = document.getElementById("app");
 const page = container?.dataset.page || "home";
 
 createRoot(container).render(html`<${AppRouter} page=${page} />`);
-
-console.log("APP started")

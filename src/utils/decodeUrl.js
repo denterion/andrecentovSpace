@@ -1,1 +1,0 @@
-export const decodeUrl = (encoded) => atob(encoded.replace(/\s/g, ""));

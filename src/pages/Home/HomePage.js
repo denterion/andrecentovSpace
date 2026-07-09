@@ -13,10 +13,10 @@ export function HomePage({ lang, setLang }) {
 
       <section className="hero">
         <div className="hero-main">
-          <p className="section-kicker">${t("Backend engineering for product teams", lang)}</p>
-          <h1>${t("I design and build backend systems that stay understandable as the product grows.", lang)}</h1>
+          <p className="section-kicker">${t("Go backend developer", lang)}</p>
+          <h1>${t("Backend services, APIs, and data flows in Go.", lang)}</h1>
           <p className="hero-text">
-            ${t("My work is centered on Go services, APIs, PostgreSQL, and service architecture with a practical focus on reliability, maintainability, and clear delivery. The goal is not just to make something work, but to make it stable enough to grow.", lang)}
+            ${t("I build portfolio projects around the backend work recruiters and engineering teams usually want to verify: clean API contracts, PostgreSQL-backed features, service boundaries, Docker startup, and readable Go code.", lang)}
           </p>
           <div className="hero-actions">
             <a className="button button-primary" href="projects.html">${t("View Selected Projects", lang)}</a>
@@ -55,8 +55,8 @@ export function HomePage({ lang, setLang }) {
       <section className="section" id="services">
         <div className="section-head">
           <p className="section-kicker">${t("What I can help with", lang)}</p>
-          <h2>${t("Backend work packaged as clear problem areas.", lang)}</h2>
-          <p>${t("I structured the site more like a mature product or course landing page: each block explains a concrete area of value instead of acting as decoration.", lang)}</p>
+          <h2>${t("What I can contribute to a backend team.", lang)}</h2>
+          <p>${t("The focus is practical product backend work: APIs, data modeling, integrations, service structure, and delivery habits that make code easier to review.", lang)}</p>
         </div>
         <div className="grid grid-3">
           ${data.features.map(([label, title, text]) => html`
@@ -95,7 +95,7 @@ export function HomePage({ lang, setLang }) {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" id="stack">
         <div className="section-head">
           <p className="section-kicker">${t("Engineering principles", lang)}</p>
           <h2>${t("What I consider good backend work.", lang)}</h2>
@@ -149,8 +149,8 @@ export function HomePage({ lang, setLang }) {
         <div className="card cta-panel">
           <div>
             <p className="section-kicker">${t("Contact", lang)}</p>
-            <h2>${t("If you need backend development that looks serious in code as well as presentation, that is the work I focus on.", lang)}</h2>
-            <p>${t("Use the contact page for direct communication, or go to the projects page for repositories and detailed project context.", lang)}</p>
+            <h2>${t("Looking for a Go backend developer who can explain decisions and show working code?", lang)}</h2>
+            <p>${t("Start with the project page for repository evidence, or use the contact page for direct communication.", lang)}</p>
           </div>
           <div className="cta-actions">
             <a className="button button-primary" href="contacts.html">${t("Open Contacts", lang)}</a>
