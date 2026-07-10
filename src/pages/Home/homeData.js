@@ -18,6 +18,12 @@ export const homeData = {
       text: "Each highlighted project links to a repository and explains what technical reviewers can inspect.",
     },
   ],
+  recruiterSnapshot: [
+    ["Target role", "Go Backend Developer"],
+    ["Best evidence", "3 public backend repositories"],
+    ["Core strengths", "APIs, PostgreSQL, Docker, service boundaries"],
+    ["Contact path", "Email, LinkedIn, hh.ru, GitHub, Telegram"],
+  ],
   profileItems: [
     "Open to backend roles and project discussions",
     "Go, PostgreSQL, REST, gRPC, Docker",
@@ -31,6 +37,11 @@ export const homeData = {
     ["04", "Containerized Delivery", "Using Docker and documented startup flows so projects are easier to review, run locally, and prepare for deployment."],
     ["05", "Integration Workflows", "Working with external APIs, parsing, background jobs, and data normalization behind stable backend contracts."],
     ["06", "Async Communication", "Exploring Kafka, events, and gRPC service communication for systems that move beyond a single-process API."],
+  ],
+  differentiators: [
+    ["Repository-first portfolio", "The site does not ask recruiters to trust a claim first. It points them to code, project boundaries, and review paths."],
+    ["Backend-specific evidence", "Instead of relying on UI screenshots, the portfolio highlights API contracts, database choices, service flow, integration work, and delivery setup."],
+    ["Interview-ready explanations", "Project summaries are written so a recruiter can screen quickly and a technical interviewer can ask concrete follow-up questions."],
   ],
   previewProjects: [
     {

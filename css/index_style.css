@@ -206,6 +206,7 @@ a {
 .hero-text,
 .section-head p,
 .feature-card p,
+.proof-card p,
 .project-preview p,
 .principle p,
 .timeline-item p,
@@ -409,13 +410,46 @@ a {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.snapshot-grid,
+.proof-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.snapshot-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.snapshot-item {
+  min-height: 132px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: 0 12px 30px rgba(16, 32, 51, 0.04);
+}
+
+.snapshot-item strong {
+  display: block;
+  margin-top: 12px;
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.proof-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .feature-card,
+.proof-card,
 .principle,
 .stack-group {
   padding: 24px;
 }
 
 .feature-card h3,
+.proof-card h3,
 .project-preview h3,
 .principle h3,
 .timeline-item h3,
@@ -541,6 +575,8 @@ a {
 @media (max-width: 1080px) {
   .hero,
   .grid-3,
+  .snapshot-grid,
+  .proof-grid,
   .project-preview-grid,
   .principles-grid,
   .stack-board,
@@ -592,6 +628,7 @@ a {
   .hero-main,
   .hero-profile,
   .feature-card,
+  .proof-card,
   .project-preview,
   .principle,
   .stack-group,
@@ -636,6 +673,8 @@ a {
   .project-preview-grid,
   .principles-grid,
   .grid-3,
+  .snapshot-grid,
+  .proof-grid,
   .stack-board,
   .orientation-strip {
     grid-template-columns: 1fr;

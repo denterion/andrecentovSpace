@@ -266,6 +266,39 @@ Object.assign(ru, {
   "For recruiting, send the role, expected stack, location or remote format, and whether you want to review a specific project from the portfolio.": "Для рекрутинга отправьте роль, ожидаемый стек, локацию или формат удаленной работы и укажите, хотите ли разобрать конкретный проект из портфолио."
 });
 
+Object.assign(ru, {
+  "Hiring snapshot": "Кратко для найма",
+  "The short version for recruiters.": "Короткая версия для рекрутеров.",
+  "Contact directly": "Связаться напрямую",
+  "Target role": "Целевая роль",
+  "Go Backend Developer": "Go Backend разработчик",
+  "Best evidence": "Главное доказательство",
+  "3 public backend repositories": "3 публичных backend-репозитория",
+  "Core strengths": "Сильные стороны",
+  "APIs, PostgreSQL, Docker, service boundaries": "API, PostgreSQL, Docker, границы сервисов",
+  "Contact path": "Каналы связи",
+  "Email, LinkedIn, hh.ru, GitHub, Telegram": "Email, LinkedIn, hh.ru, GitHub, Telegram",
+  "Competitive edge": "Преимущество",
+  "Why this portfolio is easier to review.": "Почему это портфолио проще проверить.",
+  "Repository-first portfolio": "Портфолио от репозиториев",
+  "The site does not ask recruiters to trust a claim first. It points them to code, project boundaries, and review paths.": "Сайт не просит сначала поверить утверждениям. Он ведет к коду, границам проектов и маршрутам ревью.",
+  "Backend-specific evidence": "Backend-доказательства",
+  "Instead of relying on UI screenshots, the portfolio highlights API contracts, database choices, service flow, integration work, and delivery setup.": "Вместо опоры на UI-скриншоты портфолио показывает API-контракты, решения по базе данных, поток сервиса, интеграции и настройку поставки.",
+  "Interview-ready explanations": "Объяснения для интервью",
+  "Project summaries are written so a recruiter can screen quickly and a technical interviewer can ask concrete follow-up questions.": "Описания проектов написаны так, чтобы рекрутер мог быстро отобрать кандидата, а технический интервьюер мог задавать конкретные вопросы.",
+  "Review guide": "Гайд для ревью",
+  "How to evaluate the repositories quickly.": "Как быстро оценить репозитории.",
+  "This guide is for recruiters and technical reviewers who want a fast route through backend evidence instead of opening every file at random.": "Этот гайд для рекрутеров и технических ревьюеров, которым нужен быстрый маршрут по backend-доказательствам вместо случайного открытия файлов.",
+  "Run path": "Путь запуска",
+  "Look for README setup, Docker Compose, environment variables, and startup commands.": "Смотрите README, Docker Compose, переменные окружения и команды запуска.",
+  "API surface": "API-поверхность",
+  "Check REST/gRPC contracts, Swagger documentation, authentication flow, and error behavior.": "Проверьте REST/gRPC-контракты, Swagger-документацию, поток аутентификации и поведение ошибок.",
+  "Data model": "Модель данных",
+  "Review schema decisions, persistence boundaries, query structure, and how domain state is represented.": "Оцените решения по схеме, границы persistence, структуру запросов и представление доменного состояния.",
+  "Service flow": "Поток сервиса",
+  "Follow one request or event from entry point through business logic, storage, and response or delivery.": "Проследите один запрос или событие от точки входа через бизнес-логику, хранение и ответ или доставку."
+});
+
 export function t(value, lang) {
   if (lang !== "ru" || typeof value !== "string") return value;
   return ru[value] || value;

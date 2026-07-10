@@ -223,6 +223,27 @@ body {
   max-width: 14ch;
 }
 
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.review-card {
+  padding: 22px;
+}
+
+.review-card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  letter-spacing: -0.03em;
+}
+
+.review-card p {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
 .case {
   display: grid;
   grid-template-columns: 220px 1fr;
@@ -377,6 +398,7 @@ body {
 
 @media (max-width: 1024px) {
   .hero,
+  .review-grid,
   .case,
   .capability-grid,
   .case-grid {
@@ -452,6 +474,7 @@ body {
   }
 
   .hero-metrics,
+  .review-grid,
   .capability-grid,
   .case-grid {
     grid-template-columns: 1fr;

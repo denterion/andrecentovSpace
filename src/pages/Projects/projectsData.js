@@ -10,6 +10,12 @@ export const projectsData = {
     ["Core stack", "Go / PostgreSQL / Docker"],
     ["Review focus", "APIs, data, service boundaries"],
   ],
+  reviewChecklist: [
+    ["Run path", "Look for README setup, Docker Compose, environment variables, and startup commands."],
+    ["API surface", "Check REST/gRPC contracts, Swagger documentation, authentication flow, and error behavior."],
+    ["Data model", "Review schema decisions, persistence boundaries, query structure, and how domain state is represented."],
+    ["Service flow", "Follow one request or event from entry point through business logic, storage, and response or delivery."],
+  ],
   cases: [
     {
       icon: "images/wise.png",

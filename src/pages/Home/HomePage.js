@@ -52,6 +52,24 @@ export function HomePage({ lang, setLang }) {
         </a>
       </section>
 
+      <section className="section recruiter-snapshot" id="snapshot">
+        <div className="section-head split-head">
+          <div>
+            <p className="section-kicker">${t("Hiring snapshot", lang)}</p>
+            <h2>${t("The short version for recruiters.", lang)}</h2>
+          </div>
+          <a className="text-link" href="contacts.html">${t("Contact directly", lang)}</a>
+        </div>
+        <div className="snapshot-grid">
+          ${data.recruiterSnapshot.map(([label, value]) => html`
+            <article key=${label} className="snapshot-item">
+              <span className="label">${label}</span>
+              <strong>${value}</strong>
+            </article>
+          `)}
+        </div>
+      </section>
+
       <section className="section" id="services">
         <div className="section-head">
           <p className="section-kicker">${t("What I can help with", lang)}</p>
@@ -62,6 +80,21 @@ export function HomePage({ lang, setLang }) {
           ${data.features.map(([label, title, text]) => html`
             <article key=${label} className="card feature-card">
               <span className="label">${label}</span>
+              <h3>${title}</h3>
+              <p>${text}</p>
+            </article>
+          `)}
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="section-head">
+          <p className="section-kicker">${t("Competitive edge", lang)}</p>
+          <h2>${t("Why this portfolio is easier to review.", lang)}</h2>
+        </div>
+        <div className="proof-grid">
+          ${data.differentiators.map(([title, text]) => html`
+            <article key=${title} className="card proof-card">
               <h3>${title}</h3>
               <p>${text}</p>
             </article>
@@ -95,7 +128,7 @@ export function HomePage({ lang, setLang }) {
         </div>
       </section>
 
-      <section className="section" id="stack">
+      <section className="section">
         <div className="section-head">
           <p className="section-kicker">${t("Engineering principles", lang)}</p>
           <h2>${t("What I consider good backend work.", lang)}</h2>
@@ -128,7 +161,7 @@ export function HomePage({ lang, setLang }) {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" id="stack">
         <div className="section-head">
           <p className="section-kicker">${t("Technology map", lang)}</p>
           <h2>${t("Tools and areas I work with.", lang)}</h2>

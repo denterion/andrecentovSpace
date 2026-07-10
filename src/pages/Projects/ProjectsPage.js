@@ -29,6 +29,22 @@ export function ProjectsPage({ lang, setLang }) {
         </div>
       </section>
 
+      <section className="section" id="review-guide">
+        <div className="section-head">
+          <p className="section-kicker">${t("Review guide", lang)}</p>
+          <h2>${t("How to evaluate the repositories quickly.", lang)}</h2>
+          <p>${t("This guide is for recruiters and technical reviewers who want a fast route through backend evidence instead of opening every file at random.", lang)}</p>
+        </div>
+        <div className="review-grid">
+          ${data.reviewChecklist.map(([title, text]) => html`
+            <article key=${title} className="card review-card">
+              <h3>${title}</h3>
+              <p>${text}</p>
+            </article>
+          `)}
+        </div>
+      </section>
+
       <section className="section" id="cases">
         <div className="section-head">
           <p className="section-kicker">${t("Case studies", lang)}</p>
