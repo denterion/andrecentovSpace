@@ -8,7 +8,7 @@ import { text } from "../../lib/i18n.js";
 const copy = {
   ru: {
     role: "Backend-инженер · Go · продуктовые системы",
-    title: "Андрей\nПроценко",
+    title: "Andrew\nCentov",
     intro: "Проектирую backend-системы и цифровые продукты — от API и инфраструктуры до запуска и развития проекта.",
     explore: "Смотреть проекты",
     contact: "Связаться",
@@ -21,7 +21,7 @@ const copy = {
   },
   en: {
     role: "Backend engineer · Go · product systems",
-    title: "Andrey\nProtsenko",
+    title: "Andrew\nCentov",
     intro: "I design backend systems and digital products—from APIs and infrastructure to launch and product growth.",
     explore: "Explore projects",
     contact: "Contact me",

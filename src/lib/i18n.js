@@ -6,6 +6,7 @@ export const text = {
     contact: "Контакты",
     open: "Открыть проект",
     repository: "Репозиторий",
+    details: "Подробнее",
   },
   en: {
     home: "Home",
@@ -14,6 +15,7 @@ export const text = {
     contact: "Contact",
     open: "Open project",
     repository: "Repository",
+    details: "View details",
   },
 };
 

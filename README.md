@@ -1,6 +1,6 @@
 # andrecentov.space
 
-Personal portfolio site for Andrew Protsenko, focused on Go backend developer roles.
+Personal portfolio site for Andrew Centov, focused on backend engineering and product work.
 
 ## What the site highlights
 
@@ -8,7 +8,7 @@ Personal portfolio site for Andrew Protsenko, focused on Go backend developer ro
 - Recruiter-friendly project summaries with links to public repositories.
 - A quick hiring snapshot for recruiters.
 - A review guide that helps technical interviewers inspect backend evidence quickly.
-- Direct contact paths for email, hh.ru, LinkedIn, GitHub, Telegram, and Discord.
+- Direct contact paths for LinkedIn and GitHub.
 
 ## Pages
 
