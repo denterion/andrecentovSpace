@@ -1,165 +1,90 @@
 import { html } from "../../lib/html.js";
 import { Header } from "../../components/Header.js";
 import { Footer } from "../../components/Footer.js";
-import { homeData } from "./homeData.js";
-import { t, translateTree } from "../../lib/i18n.js";
+import { TarotCard } from "../../components/TarotCard.js";
+import { projects } from "../Projects/projectsData.js";
+import { text } from "../../lib/i18n.js";
+
+const copy = {
+  ru: {
+    role: "Backend-инженер · Go · продуктовые системы",
+    title: "Андрей\nПроценко",
+    intro: "Проектирую backend-системы и цифровые продукты — от API и инфраструктуры до запуска и развития проекта.",
+    explore: "Смотреть проекты",
+    contact: "Связаться",
+    selected: "Избранные проекты",
+    projectLead: "Пять проектов — пять арканов. У каждого своя задача, характер и инженерный ритм.",
+    aboutLabel: "Подход",
+    aboutTitle: "Технология должна прояснять идею, а не заслонять её.",
+    aboutText: "Мой основной стек — Go, PostgreSQL, Docker, Kafka и gRPC. Я строю понятные границы сервисов, продумываю данные и эксплуатацию заранее, а продуктовые решения связываю с реальным пользовательским сценарием.",
+    principles: ["Ясная архитектура", "Предсказуемое поведение", "Проверяемая поставка"],
+  },
+  en: {
+    role: "Backend engineer · Go · product systems",
+    title: "Andrey\nProtsenko",
+    intro: "I design backend systems and digital products—from APIs and infrastructure to launch and product growth.",
+    explore: "Explore projects",
+    contact: "Contact me",
+    selected: "Selected projects",
+    projectLead: "Five projects, five arcana. Each has its own purpose, character, and engineering rhythm.",
+    aboutLabel: "Approach",
+    aboutTitle: "Technology should clarify the idea, not eclipse it.",
+    aboutText: "My core stack is Go, PostgreSQL, Docker, Kafka, and gRPC. I build clear service boundaries, design data and operations early, and connect product decisions to real user journeys.",
+    principles: ["Clear architecture", "Predictable behavior", "Verifiable delivery"],
+  },
+};
 
 export function HomePage({ lang, setLang }) {
-  const data = translateTree(homeData, lang);
+  const c = copy[lang];
+  const labels = text[lang];
+  const nav = [
+    { href: "#projects", label: labels.projects },
+    { href: "#about", label: labels.about },
+    { href: "contacts.html", label: labels.contact },
+  ];
 
   return html`
     <main className="page-shell">
-      <${Header} title=${t("Backend Go Developer", lang)} nav=${data.nav} lang=${lang} setLang=${setLang} />
+      <${Header} nav=${nav} lang=${lang} setLang=${setLang} />
 
-      <section className="hero">
-        <div className="hero-main">
-          <p className="section-kicker">${t("Backend engineering for product teams", lang)}</p>
-          <h1>${t("I design and build backend systems that stay understandable as the product grows.", lang)}</h1>
-          <p className="hero-text">
-            ${t("My work is centered on Go services, APIs, PostgreSQL, and service architecture with a practical focus on reliability, maintainability, and clear delivery. The goal is not just to make something work, but to make it stable enough to grow.", lang)}
-          </p>
+      <section className="home-hero">
+        <div className="hero-copy">
+          <p className="eyebrow">${c.role}</p>
+          <h1>${c.title.split("\n").map((line) => html`<span key=${line}>${line}</span>`)}</h1>
+          <p className="hero-intro">${c.intro}</p>
           <div className="hero-actions">
-            <a className="button button-primary" href="projects.html">${t("View Selected Projects", lang)}</a>
-            <a className="button button-secondary" href="contacts.html">${t("Discuss Collaboration", lang)}</a>
-          </div>
-          <div className="hero-points">
-            ${data.heroPoints.map((point) => html`<span key=${point}>${point}</span>`)}
+            <a className="button button-primary" href="#projects">${c.explore} <span aria-hidden="true">✦</span></a>
+            <a className="button button-ghost" href="contacts.html">${c.contact}</a>
           </div>
         </div>
-
-        <aside className="hero-profile">
-          <img src="images/avatar.png" alt="Portrait of Andrew Protsenko" className="portrait" />
-          <div>
-            <p className="label">${t("Work profile", lang)}</p>
-            <ul className="compact-list">
-              ${data.profileItems.map((item) => html`<li key=${item}>${item}</li>`)}
-            </ul>
-          </div>
-        </aside>
+        <div className="hero-orbit" aria-hidden="true"><span>✦</span></div>
       </section>
 
-      <section className="orientation-strip" aria-label="Page overview">
-        ${data.sideCards.map((card) => html`
-          <article key=${card.title} className="orientation-item">
-            <span className="label">${card.label}</span>
-            <strong>${card.title}</strong>
-            <p>${card.text}</p>
-          </article>
-        `)}
-        <a className="orientation-link" href="#services">
-          <span className="label">${t("Next step", lang)}</span>
-          <strong>${t("What I can help with", lang)}</strong>
-        </a>
-      </section>
-
-      <section className="section" id="services">
-        <div className="section-head">
-          <p className="section-kicker">${t("What I can help with", lang)}</p>
-          <h2>${t("Backend work packaged as clear problem areas.", lang)}</h2>
-          <p>${t("I structured the site more like a mature product or course landing page: each block explains a concrete area of value instead of acting as decoration.", lang)}</p>
+      <section className="paper-section" id="projects">
+        <div className="section-title ornate-title">
+          <span aria-hidden="true">✦</span>
+          <div><p className="eyebrow">Portfolio</p><h2>${c.selected}</h2></div>
+          <span aria-hidden="true">✦</span>
         </div>
-        <div className="grid grid-3">
-          ${data.features.map(([label, title, text]) => html`
-            <article key=${label} className="card feature-card">
-              <span className="label">${label}</span>
-              <h3>${title}</h3>
-              <p>${text}</p>
-            </article>
-          `)}
+        <p className="section-lead">${c.projectLead}</p>
+        <div className="tarot-grid">
+          ${projects.map((project) => html`<${TarotCard} key=${project.name} project=${project} lang=${lang} compact=${true} />`)}
+        </div>
+        <a className="center-link" href="projects.html">${labels.projects} <span aria-hidden="true">→</span></a>
+      </section>
+
+      <section className="about-section" id="about">
+        <div>
+          <p className="eyebrow">${c.aboutLabel}</p>
+          <h2>${c.aboutTitle}</h2>
+        </div>
+        <div>
+          <p>${c.aboutText}</p>
+          <ul>${c.principles.map((item) => html`<li key=${item}>${item}</li>`)}</ul>
         </div>
       </section>
 
-      <section className="section" id="projects-preview">
-        <div className="section-head split-head">
-          <div>
-            <p className="section-kicker">${t("Selected work", lang)}</p>
-            <h2>${t("Projects presented as case-study style summaries.", lang)}</h2>
-          </div>
-          <a className="text-link" href="projects.html">${t("Open full portfolio", lang)}</a>
-        </div>
-        <div className="project-preview-grid">
-          ${data.previewProjects.map((project) => html`
-            <article key=${project.title} className="card project-preview">
-              <div className="project-preview-top">
-                <img src=${project.icon} alt=${project.alt} className="project-icon" />
-                <span className="pill">${project.pill}</span>
-              </div>
-              <h3>${project.title}</h3>
-              <p>${project.text}</p>
-              <ul className="mini-list">
-                ${project.items.map((item) => html`<li key=${item}>${item}</li>`)}
-              </ul>
-              <a className="project-repo-link" href=${project.repo} target="_blank" rel="noopener noreferrer">${t("Open Repository", lang)}</a>
-            </article>
-          `)}
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="section-head">
-          <p className="section-kicker">${t("Engineering principles", lang)}</p>
-          <h2>${t("What I consider good backend work.", lang)}</h2>
-        </div>
-        <div className="principles-grid">
-          ${data.principles.map(([title, text]) => html`
-            <article key=${title} className="card principle">
-              <h3>${title}</h3>
-              <p>${text}</p>
-            </article>
-          `)}
-        </div>
-      </section>
-
-      <section className="section" id="process">
-        <div className="section-head">
-          <p className="section-kicker">${t("Process", lang)}</p>
-          <h2>${t("How I usually approach backend work.", lang)}</h2>
-        </div>
-        <div className="timeline">
-          ${data.process.map(([step, title, text]) => html`
-            <article key=${step} className="card timeline-item">
-              <span className="timeline-step">${step}</span>
-              <div>
-                <h3>${title}</h3>
-                <p>${text}</p>
-              </div>
-            </article>
-          `)}
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="section-head">
-          <p className="section-kicker">${t("Technology map", lang)}</p>
-          <h2>${t("Tools and areas I work with.", lang)}</h2>
-        </div>
-        <div className="stack-board">
-          ${data.stackGroups.map(([title, chips]) => html`
-            <article key=${title} className="card stack-group">
-              <h3>${title}</h3>
-              <div className="chip-row">
-                ${chips.map((chip) => html`<span key=${chip}>${chip}</span>`)}
-              </div>
-            </article>
-          `)}
-        </div>
-      </section>
-
-      <section className="section final-cta">
-        <div className="card cta-panel">
-          <div>
-            <p className="section-kicker">${t("Contact", lang)}</p>
-            <h2>${t("If you need backend development that looks serious in code as well as presentation, that is the work I focus on.", lang)}</h2>
-            <p>${t("Use the contact page for direct communication, or go to the projects page for repositories and detailed project context.", lang)}</p>
-          </div>
-          <div className="cta-actions">
-            <a className="button button-primary" href="contacts.html">${t("Open Contacts", lang)}</a>
-            <a className="button button-secondary" href="projects.html">${t("See Project Details", lang)}</a>
-          </div>
-        </div>
-      </section>
-
-      <${Footer} />
+      <${Footer} lang=${lang} />
     </main>
   `;
 }

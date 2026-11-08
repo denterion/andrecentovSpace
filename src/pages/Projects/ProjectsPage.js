@@ -1,94 +1,46 @@
 import { html } from "../../lib/html.js";
 import { Header } from "../../components/Header.js";
 import { Footer } from "../../components/Footer.js";
-import { projectsData } from "./projectsData.js";
-import { t, translateTree } from "../../lib/i18n.js";
+import { TarotCard } from "../../components/TarotCard.js";
+import { projects } from "./projectsData.js";
+import { text } from "../../lib/i18n.js";
+
+const copy = {
+  ru: {
+    eyebrow: "Портфолио · пять арканов",
+    title: "Проекты как колода идей",
+    lead: "Каждая карта показывает не просто технологический стек, а характер задачи: создавать, исследовать, соединять, направлять или собирать систему воедино.",
+    note: "От API и событийных сервисов до продуктовых платформ и Web3 — всегда с ясной архитектурой и проверяемым результатом.",
+  },
+  en: {
+    eyebrow: "Portfolio · five arcana",
+    title: "Projects as a deck of ideas",
+    lead: "Each card represents more than a technology stack. It captures the nature of the work: creating, exploring, connecting, guiding, or bringing a system together.",
+    note: "From APIs and event-driven services to product platforms and Web3—always with clear architecture and a verifiable result.",
+  },
+};
 
 export function ProjectsPage({ lang, setLang }) {
-  const data = translateTree(projectsData, lang);
+  const c = copy[lang];
+  const labels = text[lang];
+  const nav = [
+    { href: "index.html", label: labels.home },
+    { href: "contacts.html", label: labels.contact },
+  ];
 
   return html`
-    <main className="page-shell">
-      <${Header} title=${t("Selected Projects", lang)} nav=${data.nav} lang=${lang} setLang=${setLang} />
-
-      <section className="hero card">
-        <div className="hero-copy">
-          <p className="section-kicker">${t("Portfolio", lang)}</p>
-          <h1>${t("Projects that show how I approach backend systems in practice.", lang)}</h1>
-          <p>
-            ${t("Instead of showing only links, this page explains what each project solves, which engineering choices matter, and what kind of backend responsibility the project represents.", lang)}
-          </p>
-        </div>
-        <div className="hero-metrics">
-          ${data.metrics.map(([label, value]) => html`
-            <article key=${label}>
-              <span className="label">${label}</span>
-              <strong>${value}</strong>
-            </article>
-          `)}
-        </div>
+    <main className="page-shell inner-page">
+      <${Header} nav=${nav} lang=${lang} setLang=${setLang} />
+      <section className="page-intro">
+        <p className="eyebrow">${c.eyebrow}</p>
+        <h1>${c.title}</h1>
+        <p>${c.lead}</p>
       </section>
-
-      <section className="section" id="cases">
-        <div className="section-head">
-          <p className="section-kicker">${t("Case studies", lang)}</p>
-          <h2>${t("Three project types, three different backend concerns.", lang)}</h2>
-        </div>
-
-        ${data.cases.map((entry) => html`
-          <article key=${entry.title} className="case card">
-            <div className="case-side">
-              <div className="icon-frame">
-                <img src=${entry.icon} alt=${entry.alt} />
-              </div>
-              <span className="pill">${entry.pill}</span>
-              <a className="repo-link" href=${entry.repo} target="_blank" rel="noopener noreferrer">${t("Open Repository", lang)}</a>
-            </div>
-            <div className="case-main">
-              <h3>${entry.title}</h3>
-              <p className="lead">${entry.lead}</p>
-              <div className="case-grid">
-                ${entry.sections.map(([title, text]) => html`
-                  <article key=${title}>
-                    <h4>${title}</h4>
-                    <p>${text}</p>
-                  </article>
-                `)}
-              </div>
-              <div className="chip-row">
-                ${entry.chips.map((chip) => html`<span key=${chip}>${chip}</span>`)}
-              </div>
-            </div>
-          </article>
-        `)}
+      <section className="project-list" aria-label=${labels.projects}>
+        ${projects.map((project) => html`<${TarotCard} key=${project.name} project=${project} lang=${lang} />`)}
       </section>
-
-      <section className="section" id="capabilities">
-        <div className="section-head">
-          <p className="section-kicker">${t("Capabilities", lang)}</p>
-          <h2>${t("What these projects collectively show.", lang)}</h2>
-        </div>
-        <div className="capability-grid">
-          ${data.capabilities.map(([title, text]) => html`
-            <article key=${title} className="card capability">
-              <h3>${title}</h3>
-              <p>${text}</p>
-            </article>
-          `)}
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="card cta-panel">
-          <div>
-            <p className="section-kicker">${t("Next step", lang)}</p>
-            <h2>${t("If you want to discuss one of these projects or a similar backend problem, use the contact page.", lang)}</h2>
-          </div>
-          <a className="button" href="contacts.html">${t("Open Contacts", lang)}</a>
-        </div>
-      </section>
-
-      <${Footer} />
+      <aside className="project-note">✦ ${c.note}</aside>
+      <${Footer} lang=${lang} />
     </main>
   `;
 }

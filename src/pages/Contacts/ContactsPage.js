@@ -1,76 +1,57 @@
 import { html } from "../../lib/html.js";
 import { Header } from "../../components/Header.js";
 import { Footer } from "../../components/Footer.js";
-import { contactsData } from "./contactsData.js";
+import { channels } from "./contactsData.js";
 import { decodeUrl } from "../../utils/decodeUrl.js";
-import { t, translateTree } from "../../lib/i18n.js";
+import { byLang, text } from "../../lib/i18n.js";
+
+const copy = {
+  ru: {
+    eyebrow: "Контакт · сотрудничество",
+    title: "Давайте создадим что-нибудь устойчивое.",
+    lead: "Открыт к backend-задачам, продуктовой разработке и техническому сотрудничеству. Выберите удобный канал — отвечу по существу.",
+    availability: "Открыт к предложениям",
+  },
+  en: {
+    eyebrow: "Contact · collaboration",
+    title: "Let’s build something that lasts.",
+    lead: "Available for backend work, product engineering, and technical collaboration. Choose a convenient channel and I’ll get back to you directly.",
+    availability: "Open to opportunities",
+  },
+};
 
 export function ContactsPage({ lang, setLang }) {
-  const data = translateTree(contactsData, lang);
+  const c = copy[lang];
+  const labels = text[lang];
+  const nav = [
+    { href: "index.html", label: labels.home },
+    { href: "projects.html", label: labels.projects },
+  ];
 
   return html`
-    <main className="page-shell">
-      <${Header} title=${t("Contact", lang)} nav=${data.nav} lang=${lang} setLang=${setLang} />
-
-      <section className="hero card">
+    <main className="page-shell inner-page">
+      <${Header} nav=${nav} lang=${lang} setLang=${setLang} />
+      <section className="contact-hero">
         <div>
-          <p className="section-kicker">${t("Direct communication", lang)}</p>
-          <h1>${t("Available for backend roles, engineering collaboration, and project discussion.", lang)}</h1>
-          <p>
-            ${t("If you want to discuss Go development, backend architecture, APIs, service design, or one of the projects from the portfolio, choose the platform that is most convenient for you below.", lang)}
-          </p>
+          <p className="eyebrow">${c.eyebrow}</p>
+          <h1>${c.title}</h1>
+          <p>${c.lead}</p>
+          <span className="availability"><i aria-hidden="true"></i>${c.availability}</span>
         </div>
-        <aside className="hero-note">
-          <span className="label">${t("Best use cases", lang)}</span>
-          <ul className="compact-list">
-            ${data.useCases.map((item) => html`<li key=${item}>${item}</li>`)}
-          </ul>
-        </aside>
+        <span className="contact-sun" aria-hidden="true">☉</span>
       </section>
-
-      <section className="section">
-        <div className="section-head">
-          <p className="section-kicker">${t("Channels", lang)}</p>
-          <h2>${t("Professional and direct ways to reach me.", lang)}</h2>
-        </div>
-        <div className="contact-grid">
-          ${data.channels.map(([icon, name, meta, encoded]) => html`
-            <button
-              key=${name}
-              className="contact-card"
-              onClick=${() => window.open(decodeUrl(encoded), "_blank", "noopener,noreferrer")}
-              aria-label=${`Open ${name} profile`}
-              type="button"
-            >
-              <span className="icon-wrap">
-                ${icon
-                  ? html`<img src=${icon} alt=${name} />`
-                  : html`<span className="mail-icon" aria-hidden="true">@</span>`}
-              </span>
-              <span className="contact-body">
-                <span className="name">${name}</span>
-                <span className="meta">${meta}</span>
-              </span>
-            </button>
-          `)}
-        </div>
+      <section className="contact-grid">
+        ${channels.map((channel) => html`
+          <a key=${channel.name} href=${decodeUrl(channel.url)} target="_blank" rel="noopener noreferrer" className="contact-card">
+            <span className="contact-icon">
+              ${channel.icon ? html`<img src=${channel.icon} alt="" />` : html`<span aria-hidden="true">@</span>`}
+            </span>
+            <span><strong>${channel.name}</strong><small>${byLang(channel.meta, lang)}</small></span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        `)}
       </section>
-
-      <section className="section">
-        <div className="info-grid">
-          ${data.infoCards.map((card) => html`
-            <article key=${card.title} className="card info-card">
-              <p className="section-kicker">${card.kicker}</p>
-              <h3>${card.title}</h3>
-              ${card.list
-                ? html`<ul className="compact-list">${card.list.map((item) => html`<li key=${item}>${item}</li>`)}</ul>`
-                : html`<p>${card.text}</p>`}
-            </article>
-          `)}
-        </div>
-      </section>
-
-      <${Footer} />
+      <${Footer} lang=${lang} />
     </main>
   `;
 }
